@@ -45,7 +45,7 @@ extern "C" void app_main(void)
     GetHAL().init();
 
     draw_gray_scale_bars();
-    GetHAL().delay(1000);
+    GetHAL().delay(3000);
 
     // Install apps
     GetMooncake().installApp(std::make_unique<AppPower>());

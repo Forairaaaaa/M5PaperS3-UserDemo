@@ -14,9 +14,9 @@ class Hal {
 public:
     void init();
 
-    M5GFX& display         = M5.Display;
-    m5::IMU_Class& imu     = M5.Imu;
-    m5::RTC8563_Class& rtc = M5.Rtc;
+    M5GFX& display     = M5.Display;
+    m5::IMU_Class& imu = M5.Imu;
+    m5::RTC_Class& rtc = M5.Rtc;
 
     /* -------------------------------------------------------------------------- */
     /*                                   System                                   */
