@@ -115,6 +115,7 @@ private:
     WifiScanResult_t _wifi_scan_result;
     SdCardTestResult_t _sd_card_test_result;
 
+    void rtc_init();
     void power_init();
     void sd_card_init();
     void wifi_init();

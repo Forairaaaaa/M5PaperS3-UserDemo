@@ -21,6 +21,7 @@ private:
     struct UpdateTimeCount_t {
         uint32_t batVoltage = 0;
         uint32_t iconChg    = 0;
+        uint32_t lowBat     = 0;
     };
     UpdateTimeCount_t _time_count;
     bool _current_icon_chg = false;
@@ -28,6 +29,7 @@ private:
     void update_bat_voltage();
     void update_icon_chg();
     void update_shut_down_button();
+    void check_low_battery_power_off();
 };
 
 /**
@@ -91,6 +93,8 @@ class AppWifi : public mooncake::AppAbility {
 public:
     void onCreate() override;
     void onRunning() override;
+
+    static bool is_wifi_start_scanning();
 
 private:
     enum State_t {

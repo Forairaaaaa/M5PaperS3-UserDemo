@@ -45,6 +45,7 @@ void Hal::init()
     M5.begin();
     M5.Display.setRotation(1);
 
+    rtc_init();
     power_init();
     sd_card_init();
     wifi_init();
@@ -55,6 +56,27 @@ void Hal::init()
 void Hal::feedTheDog()
 {
     vTaskDelay(5);
+}
+
+/* -------------------------------------------------------------------------- */
+/*                                     RTC                                    */
+/* -------------------------------------------------------------------------- */
+void Hal::rtc_init()
+{
+    mclog::tagInfo(_tag, "rtc init");
+
+    m5::rtc_date_t date;
+    date.year    = 2077;
+    date.month   = 1;
+    date.date    = 1;
+    date.weekDay = 1;
+
+    m5::rtc_time_t time;
+    time.hours   = 12;
+    time.minutes = 0;
+    time.seconds = 0;
+
+    M5.Rtc.setDateTime(&date, &time);
 }
 
 /* -------------------------------------------------------------------------- */
