@@ -75,6 +75,11 @@ void AppPower::update_shut_down_button()
 
 void AppPower::check_low_battery_power_off()
 {
+    // Only auto power off when wifi start scanning
+    if (!AppWifi::is_wifi_start_scanning()) {
+        return;
+    }
+
     if (GetHAL().millis() - _time_count.lowBat > 2000) {
         bool is_usb_connected = GetHAL().isUsbConnected();
         float battery_voltage = GetHAL().getBatteryVoltage();

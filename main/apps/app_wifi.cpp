@@ -13,6 +13,12 @@
 
 using namespace mooncake;
 
+static bool _is_wifi_start_scanning = false;
+bool AppWifi::is_wifi_start_scanning()
+{
+    return _is_wifi_start_scanning;
+}
+
 void AppWifi::onCreate()
 {
     setAppInfo().name = "AppWifi";
@@ -95,8 +101,9 @@ void AppWifi::handle_state_first_scan()
         _scanning_mutex.unlock();
 
         if (!is_scanning) {
-            _state      = STATE_SCANNING_RESULT;
-            _time_count = 0;
+            _state                  = STATE_SCANNING_RESULT;
+            _is_wifi_start_scanning = true;
+            _time_count             = 0;
             return;
         }
 

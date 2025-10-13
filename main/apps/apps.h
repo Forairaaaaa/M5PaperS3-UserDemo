@@ -94,6 +94,8 @@ public:
     void onCreate() override;
     void onRunning() override;
 
+    static bool is_wifi_start_scanning();
+
 private:
     enum State_t {
         STATE_IDLE = 0,
