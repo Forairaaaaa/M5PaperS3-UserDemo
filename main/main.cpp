@@ -25,13 +25,17 @@ void draw_firmware_version()
 
 void draw_gray_scale_bars()
 {
-    GetHAL().display.setEpdMode(epd_mode_t::epd_quality);
     std::vector<uint32_t> colors = {0xffffff, 0xeeeeee, 0xdddddd, 0xcccccc, 0xbbbbbb, 0xaaaaaa, 0x999999, 0x888888,
                                     0x777777, 0x666666, 0x555555, 0x444444, 0x333333, 0x222222, 0x111111, 0x000000};
-    GetHAL().display.fillScreen(TFT_WHITE);
+
+    GetHAL().display.setEpdMode(epd_mode_t::epd_quality);
+    GetHAL().display.fillScreen(TFT_BLACK);
+    GetHAL().delay(800);
+    GetHAL().display.startWrite();
     for (int i = 0; i < 16; i++) {
         GetHAL().display.fillRect(i * 60, 0, 60, 540, colors[i]);
     }
+    GetHAL().display.endWrite();
 }
 
 void check_full_display_refresh_request(bool force = false)
