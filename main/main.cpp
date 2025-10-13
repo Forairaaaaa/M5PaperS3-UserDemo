@@ -56,6 +56,8 @@ void check_full_display_refresh_request(bool force = false)
 
 extern "C" void app_main(void)
 {
+    mclog::set_time_format(mclog::time_format_unix_seconds);
+
     GetHAL().init();
 
     draw_firmware_version();
